@@ -68,6 +68,7 @@ const currentFilters = ref({
   order: 'ASC'
 });
 
+// Fetch employees
 const fetchEmployees = async () => {
   isLoading.value = true;
   errorBanner.value = '';
@@ -83,11 +84,13 @@ const fetchEmployees = async () => {
   }
 };
 
+// Handle filter changes
 const handleFilterChange = (newFilters) => {
   currentFilters.value = newFilters;
   fetchEmployees();
 };
 
+// Toggle form
 const toggleForm = () => {
   if (showForm.value) {
     editingId.value = null;
@@ -95,6 +98,7 @@ const toggleForm = () => {
   }
   showForm.value = !showForm.value;
 };
+
 
 onMounted(() => {
   fetchEmployees();
@@ -160,7 +164,7 @@ const editEmployee = (emp) => {
     active: emp.active === 1
   };
   editingId.value = emp.id;
-  // 💡 藏起来的秘密：在这里点击编辑，自动展开顶部的表单，展示详情！
+  
   showForm.value = true;
   window.scrollTo({ top: 0, behavior: 'smooth' });
 };

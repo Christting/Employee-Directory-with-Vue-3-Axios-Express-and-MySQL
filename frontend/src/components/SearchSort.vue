@@ -26,13 +26,13 @@
 
 <script setup>
 import { ref } from 'vue';
-
+// Outgoing events to parent (App.vue)
 const emit = defineEmits(['filter-change']);
-
+// Form fields state
 const searchQuery = ref('');
 const sortColumn = ref('name');
 const sortOrder = ref('ASC');
-
+// Validation errors state
 const onFilterChange = () => {
   emit('filter-change', {
     q: searchQuery.value,

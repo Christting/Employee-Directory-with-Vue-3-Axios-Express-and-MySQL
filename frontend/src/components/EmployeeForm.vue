@@ -74,19 +74,20 @@
 <script setup>
 import { reactive, watch, ref } from 'vue';
 
+// Incoming data from parent (App.vue)
 const props = defineProps({
   employee: Object,
   editingId: Number
 });
-
+// Outgoing events to parent (App.vue)
 const emit = defineEmits(['save', 'close']);
-
+// Form fields state
 const form = reactive({
   empId: '', name: '', email: '', department: '', position: '', hireDate: '', salary: 1500, active: true
 });
-
+// Validation errors state
 const errors = ref({});
-
+//automatically fills form
 watch(
   () => props.employee,
   (newValue) => {
@@ -100,11 +101,11 @@ watch(
   },
   { immediate: true }
 );
-
+// Form validation logic
 const validateForm = () => {
   errors.value = {};
   let isValid = true;
-
+// Check Employee ID format( EMP + 3-5 digits )
   const empIdRegex = /^EMP[0-9]{3,5}$/;
   if (!form.empId) {
     errors.value.empId = 'Required.';
@@ -113,12 +114,12 @@ const validateForm = () => {
     errors.value.empId = 'Must be "EMP" + 3-5 digits.';
     isValid = false;
   }
-
+// Check employee name
   if (!form.name || form.name.length < 3) {
     errors.value.name = 'Min 3 chars.';
     isValid = false;
   }
-
+// Check email
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!form.email || !emailRegex.test(form.email)) {
     errors.value.email = 'Invalid format.';
@@ -138,7 +139,7 @@ const validateForm = () => {
       isValid = false;
     }
   }
-
+// Check salary
   if (!form.salary || isNaN(form.salary)) {
     errors.value.salary = 'Invalid.';
     isValid = false;
@@ -149,7 +150,7 @@ const validateForm = () => {
 
   return isValid;
 };
-
+// Form submit handler
 const handleSubmit = () => {
   if (!validateForm()) return;
   emit('save', { ...form });

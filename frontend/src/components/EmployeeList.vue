@@ -48,7 +48,7 @@
             <td @click="$emit('edit', emp)">
               <span class="dept-tag">{{ emp.department }}</span>
             </td>
-            <td @click="$emit('edit', emp)">{{ emp.position }}</td>
+            <td @click="$emit('edit', emp)">{{ emp.position }}</td> 
             <td @click="$emit('edit', emp)">{{ formatISOData(emp.hireDate) }}</td>
             <td class="salary-cell" @click="$emit('edit', emp)">{{ formatRM(emp.salary) }}</td>
             <td class="text-center">
@@ -71,10 +71,10 @@
 
 <script setup>
 import SearchSort from './SearchSort.vue';
-
+// Incoming data from parent (App.vue)
 defineProps({ employees: Array, isLoading: Boolean });
 defineEmits(['edit', 'delete', 'filter-change']);
-
+//
 const formatRM = (value) =>
   new Intl.NumberFormat('ms-MY', { style: 'currency', currency: 'MYR' }).format(value);
 
@@ -167,7 +167,9 @@ const formatISOData = (isoString) => (isoString ? isoString.split('T')[0] : '');
   font-weight: 600;
   color: #4a433b;
 }
-.action-btn-group {
+
+/* Action Button Group */
+.action-btn-group { 
   display: flex;
   justify-content: center;
   gap: 8px;
