@@ -139,7 +139,7 @@
                   @click="$emit('edit', emp)"
                   class="btn-edit-link"
                 >
-                  Edit
+                  ✏️Edit
                 </button>
 
                 <button
@@ -368,19 +368,35 @@ const formatISOData = (isoString) => {
 }
 
 .btn-edit-link {
-  color: #8c8173;
-  background: transparent;
+
+  background: #c4a477;
+  color: #ffffff;
+
   border: none;
-  padding: 6px 10px;
+
+  padding: 8px 14px;
+
+  border-radius: 6px;
+
   font-size: 0.85rem;
   font-weight: 600;
+
   cursor: pointer;
-  border-radius: 4px;
+
+  transition: all 0.2s ease;
+
+  box-shadow: 0 2px 6px rgba(186, 164, 133, 0.2);
+
 }
 
 .btn-edit-link:hover {
-  color: #38322b;
-  background: #f1ece4;
+
+  background: #9e8260;
+
+  transform: translateY(-1px);
+
+  box-shadow: 0 4px 10px rgba(140, 118, 92, 0.25);
+
 }
 
 .btn-delete {

@@ -177,7 +177,7 @@ const handleSubmit = () => {
 .form-group { display: flex; flex-direction: column; }
 .form-group label { font-size: 0.8rem; font-weight: 600; margin-bottom: 6px; color: #5c5347; }
 input, select { width: 100%; padding: 9px 12px; border-radius: 6px; border: 1px solid #dacfc0; background-color: #faf9f6; color: #4a433b; font-size: 0.85rem; box-sizing: border-box; transition: all 0.2s ease; }
-input:focus, select:focus { outline: none; border-color: #baa485; background-color: #ffffff; box-shadow: 0 0 0 3px rgba(186, 164, 133, 0.12); }
+input:focus, select:focus { outline: none; border-color: #d0c3b1; background-color: #ffffff; box-shadow: 0 0 0 3px rgba(186, 164, 133, 0.12); }
 input.input-error { border-color: #d97373; background-color: #fff8f8; }
 .error-text { color: #c54242; font-size: 0.75rem; margin-top: 4px; }
 .form-actions-row { display: flex; justify-content: flex-end; align-items: center; gap: 12px; border-top: 1px solid #f4f0e8; padding-top: 16px; }
