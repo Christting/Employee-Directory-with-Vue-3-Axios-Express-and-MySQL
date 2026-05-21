@@ -1,59 +1,51 @@
-# UTM HR Employee Management System - Backend Server
+# Employee Directory — Chapter 8 Individual Assignment
 
-**Name:** CHRIST TING SHIN LING  
-**Matric No:** A24CS5050  
-**Course:** Web Application Development  
-**Stack:** Vue 3 · Vite · Axios · Express · MySQL  
+**Student Information**
+* **Name:** Christ Ting Shin Ling
+* **Matric Number:** A24CS5050
+* **Course:** Cross Platform Application Development
+* **Stack:** Vue 3 (Composition API) · Vite · Axios · Express.js · Node.js · MySQL
 
 ---
-This is the backend RESTful API server for the UTM HR Employee Management System, built using **Node.js**, **Express**, and **mysql2/promise**. It executes secured database interaction layers powered by a centralized connection pool.
 
-## Tech Stack & Architecture
-* **Express.js Framework**: Handles decoupled routing for client communication logic.
-* **MySQL Database Pool**: Integrated via `mysql2/promise` to support asynchronous connection recycling, optimizing performance barriers under traffic.
-* **Prepared Statements (`?`)**: Sanitizes incoming parameters dynamically to neutralize SQL Injection threat vectors.
-* **Server-Side Filtering Matrix**: Processes dynamic string matching via SQL `LIKE` operators and enforces whitelist checks against illegal sorting parameter columns.
-* **CORS Middleware**: Enabled to bridge resource-sharing handshakes safely with the Vue 3 frontend pipeline running on port 5173.
+## Project Overview
+This project is a premium full-stack Employee Directory web application tailored for internal organizational staff records management. It is styled around an elegant, responsive soft-dashboard card layout utilizing blur backdrop filters and custom neon purple/blue gradient accents.
 
-## Setup Instructions
+The system empowers human resource coordinates to perform secure dynamic data operations across separated client-server architectural networks.
 
-### Prerequisites
-* Laragon (Full edition) with MySQL running on port 3306
-* Node.js 24+ and npm installed globally
+---
 
-### 1. Database Setup
-1. Open HeidiSQL via Laragon.
-2. Create a database named utm_employee_db.
-3. Go to File -> Load SQL file -> select sql/schema.sql from this project directory.
-4. Press F9 to execute the database script.
-5. Verify: 7 initial employee records appear successfully in the database table.
+## Technical Architecture & Features
 
-### 2. Backend Server Execution (Port 3001)
+### 1. Frontend Capabilities
+* **Vue 3 Composition API**: Structured entirely using decoupled, reusable components (EmployeeForm.vue and EmployeeList.vue) driven by stateful properties (props) and event triggers (emits).
+* **Advanced Inline Validation**: Real-time form evaluation using localized state regex patterns to validate Employee IDs (^EMP[0-9]{3,5}$) and strict financial baseline boundaries (RM 1,500 - RM 50,000).
+* **Centralized Axios Interceptors**: Managed lifecycle network pipelines that intercept outgoing payloads for request telemetry logging, alongside response handlers mapping connection anomalies into browser alerts.
+* **Localization Currency Formatting**: Integrates the native JavaScript Intl.NumberFormat('ms-MY') utility matrix to output financial compensation entries accurately inside Malaysian Ringgit (MYR) currency syntax.
+
+### 2. Backend API Worker
+* **Express.js Service API**: Production-ready decoupled RESTful framework mapping secure asynchronous data exchange pathways.
+* **Secured Prepared Statements**: All active transactional database requests (INSERT, DELETE, SELECT) leverage parameterized placeholders (?) to encapsulate strings, completely neutralizing SQL Injection threat factors.
+* **Server-Side Filter Matrix**: Dynamically appends dynamic query criteria to pull multi-column fuzzy match constraints (LIKE operands across name, empId, and email) and enforces column verification whitelists directly on the database engine level.
+
+---
+
+## Project Structure Diagram
+```text
+Chapter8_A24CS5050_ChristTingShinLing/
+├── frontend/     # Vue 3 Client Application (Vite Server gateway)
+├── server/       # Node.js Express Backend REST API Worker
+├── sql/          # Database Schema blueprints & Seed records scripts
+├── README.md     # Master Portfolio documentation summary page
+└── report.pdf    # Final comprehensive systems engineering analysis report
+
+# Set up backend modules
 cd server
 npm install
 node index.js
 
-Expected output: Backend server is running on http://localhost:3001
-
-### 3. Frontend Client Interface Execution (Port 5173)
+# Set up frontend modules
 cd frontend
 npm install
 npm run dev
 
-Open your local browser gateway and navigate inside the development routing target at http://localhost:5173/
-
----
-
-## Architecture Flow
-Browser Client (Port 5173) <——> Express API Server (Port 3001) <——> MySQL Database (Port 3306)
-[ Vue 3 + Vite ]             [ Node.js v24 ]                  [ Laragon Engine ]
-
----
-
-## Key Technical Notes
-
-* **Secured Prepared Statements**: All SQL queries (INSERT, DELETE, SELECT) leverage parameterized queries (? placeholders) instead of raw string concatenation to completely eliminate SQL injection threat surfaces.
-* **Centralized Axios Architecture**: Implemented a standalone custom Axios instance (src/services/api.js) handling automated request console tracking and customized response interceptors for immediate runtime error mapping and user-friendly toast error alerts.
-* **Server-Side Filter Pipeline**: Dynamic multi-column fuzzy search handling LIKE matching expressions across fields (name, empId, email) alongside strict column sorting validation whitelists (name, hireDate, salary) processed directly on the server layer.
-* **Advanced Form Validation**: Enforces pattern matching regex boundaries (^EMP[0-9]{3,5}$) and strict financial bounds checking (RM 1,500 - RM 50,000) using Vue .trim and .number modifiers before any API dispatch.
-* **Premium Responsive UX**: Styled with a fluid Minimalist Cream Theme layout. Features an interactive top-collapsible hidden input card layout that toggles smoothly on user click and scales responsively down to a 1-column layout under mobile screen width break points.

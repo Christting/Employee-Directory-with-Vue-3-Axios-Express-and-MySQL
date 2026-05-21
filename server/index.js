@@ -62,6 +62,109 @@ app.post('/employees', async (req, res) => {
     }
 });
 
+
+// 4. UPDATE: Update employee information
+app.put('/employees/:id', async (req, res) => {
+    const { id } = req.params;
+
+    const {
+        empId,
+        name,
+        email,
+        department,
+        position,
+        hireDate,
+        salary,
+        active
+    } = req.body;
+
+    try {
+        const sql = `
+            UPDATE employees
+            SET
+                empId = ?,
+                name = ?,
+                email = ?,
+                department = ?,
+                position = ?,
+                hireDate = ?,
+                salary = ?,
+                active = ?
+            WHERE id = ?
+        `;
+
+        await pool.query(sql, [
+            empId,
+            name,
+            email,
+            department,
+            position,
+            hireDate,
+            salary,
+            active ? 1 : 0,
+            id
+        ]);
+
+        res.json({
+            message: 'Employee updated successfully!'
+        });
+
+    } catch (err) {
+        res.status(500).json({
+            error: err.message
+        });
+    }
+});
+
+// UPDATE employee
+app.put('/employees/:id', async (req, res) => {
+    const { id } = req.params;
+
+    const {
+        empId,
+        name,
+        email,
+        department,
+        position,
+        hireDate,
+        salary,
+        active
+    } = req.body;
+
+    try {
+        const sql = `
+            UPDATE employees
+            SET empId = ?, 
+                name = ?, 
+                email = ?, 
+                department = ?, 
+                position = ?, 
+                hireDate = ?, 
+                salary = ?, 
+                active = ?
+            WHERE id = ?
+        `;
+
+        await pool.query(sql, [
+            empId,
+            name,
+            email,
+            department,
+            position,
+            hireDate,
+            salary,
+            active ? 1 : 0,
+            id
+        ]);
+
+        res.json({ message: 'Employee updated successfully!' });
+
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+});
+
+
 // 3. DELETE: Remove an employee record safely by primary key ID
 app.delete('/employees/:id', async (req, res) => {
     const { id } = req.params;
