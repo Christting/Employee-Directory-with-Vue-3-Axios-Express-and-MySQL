@@ -39,13 +39,62 @@ Chapter8_A24CS5050_ChristTingShinLing/
 ├── README.md     # Master Portfolio documentation summary page
 └── report.pdf    # Final comprehensive systems engineering analysis report
 
-# Set up backend modules
+
+## Setup Instructions
+
+### 1. Database Setup
+
+Open MySQL or Laragon and run:
+
+```sql
+sql/schema.sql
+```
+
+---
+
+### 2. Backend Setup
+
+```bash
 cd server
 npm install
 node index.js
+```
 
-# Set up frontend modules
+Backend runs on:
+
+```text
+http://localhost:3001
+```
+
+---
+
+### 3. Frontend Setup
+
+```bash
 cd frontend
 npm install
 npm run dev
+```
 
+Frontend runs on:
+
+```text
+http://localhost:5174
+```
+
+---
+
+## Features
+
+- Add Employee
+- Edit Employee
+- Delete Employee
+- Employee Search
+- Employee Sorting
+- Form Validation
+- Axios Interceptors
+- Loading State
+- Error Handling
+- Responsive Design
+
+---

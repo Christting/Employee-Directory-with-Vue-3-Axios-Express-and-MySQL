@@ -101,19 +101,51 @@ onMounted(() => {
 });
 
 const saveEmployee = async (employeeData) => {
+
   isLoading.value = true;
+  errorBanner.value = '';
+
   try {
-    await api.post('/employees', employeeData);
-    
+
+    // UPDATE existing employee
+    if (editingId.value) {
+
+      await api.put(
+        `/employees/${editingId.value}`,
+        employeeData
+      );
+
+    }
+
+    // CREATE new employee
+    else {
+
+      await api.post(
+        '/employees',
+        employeeData
+      );
+
+    }
+
+    // Reset form state
     editingId.value = null;
     selectedEmployee.value = null;
     showForm.value = false;
+
+    // Refresh employee list
     await fetchEmployees();
+
   } catch (err) {
-    errorBanner.value = err.message;
+
+    errorBanner.value =
+      err.message || 'Failed to save employee';
+
   } finally {
+
     isLoading.value = false;
+
   }
+
 };
 
 const editEmployee = (emp) => {

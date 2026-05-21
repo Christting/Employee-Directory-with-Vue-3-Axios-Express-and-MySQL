@@ -1,8 +1,8 @@
--- 1. 如果之前有重名的数据库，先删掉，确保全新干净
 CREATE DATABASE IF NOT EXISTS utm_employee_db;
 USE utm_employee_db;
 
--- 2. 告诉数据库，我们要画一张叫 employees 的表格
+DROP TABLE IF EXISTS employees;
+
 CREATE TABLE employees (
     id INT AUTO_INCREMENT PRIMARY KEY,
     empId VARCHAR(10) NOT NULL UNIQUE,
