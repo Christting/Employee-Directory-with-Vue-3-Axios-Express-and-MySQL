@@ -1,3 +1,4 @@
+import SearchSort from './SearchSort.vue';
 <template>
   <div class="card table-card-full">
     <div class="card-header">
@@ -5,15 +6,7 @@
       <p>Active Staff Records & Registry Overview (Click Profile or Edit to modify)</p>
     </div>
 
-    <div class="toolbar-filter">
-      <div class="search-box-wrapper">
-        <input 
-          v-model="searchQuery" 
-          @input="onFilterChange" 
-          placeholder="🔍 Search name, ID, or email address..." 
-          class="input-search"
-        />
-      </div>
+    <SearchSort @filter-change="$emit('filter-change', $event)" />
 
       <div class="sort-controls-wrapper">
 
@@ -168,11 +161,10 @@
       </table>
 
     </div>
-  </div>
+
 </template>
 
 <script setup>
-import { ref } from 'vue';
 
 defineProps({
   employees: Array,
@@ -181,17 +173,8 @@ defineProps({
 
 const emit = defineEmits(['edit', 'delete', 'filter-change']);
 
-const searchQuery = ref('');
-const sortColumn = ref('name');
-const sortOrder = ref('ASC');
 
-const onFilterChange = () => {
-  emit('filter-change', {
-    q: searchQuery.value,
-    sortBy: sortColumn.value,
-    order: sortOrder.value
-  });
-};
+
 
 const formatRM = (value) => {
   return new Intl.NumberFormat(

@@ -38,6 +38,8 @@ Chapter8_A24CS5050_ChristTingShinLing/
 ├── sql/          # Database Schema blueprints & Seed records scripts
 ├── README.md     # Master Portfolio documentation summary page
 └── report.pdf    # Final comprehensive systems engineering analysis report
+\`\`\`
+
 
 
 ## Setup Instructions
